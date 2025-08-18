@@ -1,4 +1,4 @@
-# **TurboDex **
+# **TurboDex**
 
 *“Gotta snap ’em all!” — Your AI-powered car Pokédex*
 
