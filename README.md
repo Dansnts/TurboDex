@@ -1,8 +1,8 @@
 # **TurboDex**
 
-*“Gotta snap ’em all!” — Your AI-powered car Pokédex*
+*“Gotta snap ’em all!”*
 
-![TurboDex Banner](logo.png)
+<img src="logo.png" width="300" >
 
 ---
 
@@ -21,7 +21,9 @@ TurboDex combines **cutting-edge machine learning**, **modern app design**, and 
 ---
 
 ## Visual identity
-![Visual Identity](visualIdentity.png)
+
+<img src="visualIdentity.png" width="500" >
+
 
 ---
 
@@ -36,7 +38,7 @@ TurboDex combines **cutting-edge machine learning**, **modern app design**, and 
 
 ---
 
-## Tech Stack
+## Tech Stack (Temporary)
 
 ### **Frontend (App & Landing Page)**
 
@@ -67,71 +69,35 @@ TurboDex combines **cutting-edge machine learning**, **modern app design**, and 
 
 ```ascii
                   ┌─────────────────────────┐
-                  │        Landing Page      │
-                  │ (Next.js + TailwindCSS)  │
+                  │        Landing Page     │
+                  │ (Next.js + TailwindCSS) │
                   └──────────────┬──────────┘
                                  │
                   ┌──────────────▼───────────────┐
-                  │        API Gateway (FastAPI)  │
+                  │     API Gateway (FastAPI)    │
                   └───────┬──────────┬───────────┘
                           │          │
         ┌─────────────────▼──┐   ┌───▼────────────────┐
-        │ Car Recognition AI │   │ Face/Plate Blurring │
+        │ Car Recognition AI │   │ Face/Plate Blurring│
         │ (PyTorch/ONNX)     │   │ (YOLOv8)           │
-        └──────────┬─────────┘   └──────────┬────────┘
+        └──────────┬─────────┘   └──────────┬─────────┘
                    │                        │
-         ┌─────────▼──────────┐   ┌─────────▼─────────┐
+         ┌─────────▼──────────┐   ┌─────────▼──────────┐
          │ PostgreSQL (cars,  │   │ Redis + Celery     │
          │ users, collections)│   │ (async processing) │
-         └─────────┬──────────┘   └─────────┬─────────┘
+         └─────────┬──────────┘   └─────────┬──────────┘
                    │                        │
-           ┌───────▼────────┐       ┌───────▼─────────┐
-           │   .NET MAUI     │       │  Feed/Community │
-           │   Mobile App    │       │    Features     │
-           └─────────────────┘       └─────────────────┘
+           ┌───────▼─────────┐      ┌───────▼─────────┐
+           │   .NET MAUI     │      │  Feed/Community │
+           │   Mobile App    │      │    Features     │
+           └─────────────────┘      └─────────────────┘
 ```
 
 ---
 
 ## Getting Started
 
-### **1. Clone the repository**
-
-```bash
-git clone https://github.com/your-org/turbodex.git
-cd turbodex
-```
-
-### **2. Backend Setup (FastAPI + DB)**
-
-```bash
-cd backend
-docker-compose up --build
-```
-
-Services:
-
-* API → `http://localhost:8000`
-* PostgreSQL → `localhost:5432`
-* Redis → `localhost:6379`
-
-### **3. Frontend (Landing Page)**
-
-```bash
-cd landing
-npm install
-npm run dev
-```
-
-Access at → `http://localhost:3000`
-
-### **4. Mobile App (.NET MAUI)**
-
-```bash
-cd app
-dotnet build
-dotnet run
-```
+...
 
 ---
 
@@ -159,26 +125,13 @@ dotnet run
 
 ## Dataset & AI Training
 
-* **Source**: Open car datasets (Stanford Cars, CompCars, etc.) + user-contributed data
-* **Preprocessing**: resize, normalize, augment (rotations, lighting, occlusions)
-* **Models**:
-
-  * **YOLOv8** → faces & plates → blur
-  * **EfficientNet/ResNet** → car recognition
-* **Training**:
-
-  * Initial training on public dataset
-  * Fine-tuning with TurboDex-specific images
+...
 
 ---
 
 ## Contributing
 
-1. Fork the repo
-2. Create your feature branch (`git checkout -b feature/my-feature`)
-3. Commit changes (`git commit -m "feat: add my feature"`)
-4. Push (`git push origin feature/my-feature`)
-5. Open a Pull Request
+...
 
 ---
 
