@@ -3,15 +3,14 @@ flowchart LR
   user[(Utilisateur)]
 
   subgraph Clients
-    MAUI["TurboDex App\n.NET MAUI"]
-    LP["Landing Page\nNext.js"]
+    MAUI["TurboDex App .NET MAUI"]
+    LP["Landing Page"]
   end
 
   API[FastAPI API]
-  AI["AI Services\nBlur YOLOv8 + Car Classifier"]
+  AI["AI Services & Blur YOLOv8 + Car Classifier"]
   DB[(PostgreSQL)]
   BLOB[(Azure Blob Storage)]
-  FEED["Feed Service\n(Future)"]
 
   user -->|Capture photo / Consultation| MAUI
   user -->|Découverte / FAQ| LP
@@ -20,7 +19,4 @@ flowchart LR
   API --> DB
   API --> BLOB
   API --> AI
-  API --> FEED
-
-
 ```
