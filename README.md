@@ -2,7 +2,7 @@
 
 *“Gotta snap ’em all!”*
 
-<img src="logo.png" width="300" >
+<img src="docs/images/logo.png" width="300" >
 
 ---
 
@@ -131,7 +131,7 @@ flowchart TB
 
 #### Visual identity
 
-<img src="visualIdentity.png" width="500" >
+<img src="week1/visualIdentity/visualIdentity.png" width="500" >
 
 #### Home / Feed
 ![Home Page Screenshot](docs/images/home.png)
@@ -168,7 +168,7 @@ Code here : [TurboDex Landing page code](docs/)
 ## Step 5: Work Process
 
 * Git Flow: main / develop / feature branches
-* Agile/Scrum workflow using MURAL:
+* Agile/Scrum workflow using MURAL (Available here) : [MURAL URL](https://app.mural.co/t/test01211/m/test01211/1755517756505/208f4728ec714f998d951d524f494f457b5bf128?sender=ua561b35d4a01fabeed351903)
 
   * 3-week sprints
   * Daily stand-ups via Teams or Discord
