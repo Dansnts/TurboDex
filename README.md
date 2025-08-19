@@ -5,6 +5,18 @@
 <img src="docs/images/logo.png" width="300" >
 
 ---
+## Table of Contents
+
+1. [Project Description](#step-1-project-description)
+2. [Preliminary Architecture](#step-2-preliminary-architecture)
+3. [Mockups / Landing Page](#step-3-mockups--landing-page)
+4. [Technical Choices](#step-4-technical-choices)
+5. [Work Process](#step-5-work-process)
+6. [Development Tools](#step-6-development-tools)
+7. [Deployment Environment](#step-7-deployment-environment)
+8. [CI/CD Pipeline](#step-8-cicd-pipeline)
+
+---
 
 # Week 1
 
