@@ -40,6 +40,9 @@ TurboDex combines **cutting-edge machine learning**, **modern app design**, and 
 
 ## Tech Stack (Temporary)
 
+## Architecture 
+[Architecture schema](/docs/"Schéma d'architecture")
+
 ### **Frontend (App & Landing Page)**
 
 * [.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/) (cross-platform mobile & desktop)
