@@ -9,13 +9,59 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
+/* Modern Header */
 .header {
-  background: #CC0605;
-  color: #fff;
-  padding: 1.5rem;
+  background: linear-gradient(135deg, #111 0%, #1e1e1e 100%);
+  color: white;
+  padding: 2rem 1.5rem;
   text-align: center;
+  border-bottom: 3px solid #ff4500;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.logo-img {
+  width: 90px;
+  object-fit: contain;
+}
+
+
+.brand-text {
+  text-align: left;
+}
+
+.brand-name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ddd;
+  margin-top: 0.2rem;
+}
+
+/* Animation */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .header-content {
   display: flex;
   justify-content: center;
@@ -27,20 +73,6 @@ body {
   height: 28px;
 }
 
-.logo-img {
-  width: 100px;
-  height: auto;
-}
-
-.logo-text {
-  font-weight: 800;
-  font-size: 1.5rem;
-}
-.tagline {
-  font-size: 0.85rem;
-  opacity: 0.85;
-  margin-top: 0.25rem;
-}
 
 /* Hero */
 .hero {
