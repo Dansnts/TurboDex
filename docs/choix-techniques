@@ -1,0 +1,11 @@
+Langages : MAUI, Python (backend/ML).
+
+Frameworks : Next.js, FastAPI, PyTorch/ONNX.
+
+DB : PostgreSQL (scalable, standard SQL).
+
+Stockage : Azure Blob Storage (inclus crédits étudiants).
+
+Infra as Code : Terraform (provision ressources).
+
+Tests : Pytest (backend), Vitest/Playwright (frontend).
