@@ -6,29 +6,31 @@
 
 ---
 
-## Overview
-
-**TurboDex** is a cross-platform mobile and web application that lets users:
-
-* Snap cars in the wild 
-* Instantly recognize their **make & model** using **AI fine-tuned on car datasets** 
-* Automatically **blur faces and license plates** for privacy 
-* Collect and track sightings in a personal **Pokédex-like collection** 
-* Share and explore a community-driven **feed of car spots** 
-
-TurboDex combines **cutting-edge machine learning**, **modern app design**, and **cloud-native infrastructure** to deliver a fun, safe, and scalable car-spotting experience.
-
----
-
-## Visual identity
-
-<img src="visualIdentity.png" width="500" >
+# Week 1
 
 
----
+## Step 1: Project Description
 
-##  Features
+### Project Objective
+**TurboDex** is a cross-platform mobile and web application that lets users discover, recognize, and collect cars in real-time using AI, while keeping privacy at the forefront.
 
+### Functional Requirements
+- Snap cars in the wild with a mobile or web camera
+- Instantly recognize **make & model** using **AI fine-tuned on car datasets**
+- Automatically **blur faces and license plates** for privacy
+- Collect and track sightings in a personal **Pokédex-like collection**
+- Share and explore a community-driven **feed of car spots**
+- View and manage user profile with stats and collection history
+
+### Non-Functional Requirements
+- Cross-platform: mobile (iOS/Android via .NET MAUI) and web
+- Privacy-first: all images processed to blur sensitive elements
+- Scalable and responsive: handle thousands of users and images
+- High performance: real-time AI recognition with minimal latency
+- Secure: protect user data with encryption and secure authentication
+- Maintainable: clean codebase, modular components, and CI/CD integration
+
+### Features 
  **AI Car Recognition** – Identify car make/model instantly
  **Privacy First** – Automatic blurring of faces & license plates
  **Gamified Collection** – Build your personal Pokédex of cars
@@ -36,74 +38,178 @@ TurboDex combines **cutting-edge machine learning**, **modern app design**, and 
  **Cross-Platform App** – Works on iOS, Android, and Web
  **Landing Page** – Clean marketing site with FAQs, About, and download links
 
----
+## Step 2: Preliminary Architecture
 
-## Tech Stack (Temporary)
+### Architecture
 
-## Architecture 
-[Architecture schema](/docs/"Schéma d'architecture")
+```mermaid
+flowchart LR
+  user[(User)]
 
-### **Frontend (App & Landing Page)**
+  subgraph Clients
+    MAUI["TurboDex App (.NET MAUI)"]
+    LP["Landing Page"]
+  end
 
-* [.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/) (cross-platform mobile & desktop)
-* [Next.js 14](https://nextjs.org/) (landing page)
-* [TypeScript](https://www.typescriptlang.org/)
-* [TailwindCSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+  API[FastAPI API]
+  AI["AI Services: YOLOv8 + Car Classifier & Blur"]
+  DB[(PostgreSQL Database)]
+  BLOB[(Azure Blob Storage)]
 
-### **Backend & Infrastructure**
-
-* [FastAPI](https://fastapi.tiangolo.com/) (REST API)
-* [PostgreSQL](https://www.postgresql.org/) (relational DB)
-* [Redis](https://redis.io/) (caching & async tasks)
-* [Celery](https://docs.celeryq.dev/) (background processing)
-* [Docker](https://www.docker.com/) + [GitHub Actions](https://github.com/features/actions)
-* [Azure Container Apps](https://azure.microsoft.com/) (deployment)
-
-### **Machine Learning**
-
-* [YOLOv8](https://github.com/ultralytics/ultralytics) for **face & plate detection/blurring**
-* [EfficientNet / ResNet / ViT](https://paperswithcode.com/method/efficientnet) fine-tuned for **car recognition**
-* [Azure Custom Vision](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision/) (Plan A, managed training)
-* [ONNX / PyTorch](https://pytorch.org/) (Plan B, self-hosted models)
-
----
-
-## Architecture
-
-```ascii
-                  ┌─────────────────────────┐
-                  │        Landing Page     │
-                  │ (Next.js + TailwindCSS) │
-                  └──────────────┬──────────┘
-                                 │
-                  ┌──────────────▼───────────────┐
-                  │     API Gateway (FastAPI)    │
-                  └───────┬──────────┬───────────┘
-                          │          │
-        ┌─────────────────▼──┐   ┌───▼────────────────┐
-        │ Car Recognition AI │   │ Face/Plate Blurring│
-        │ (PyTorch/ONNX)     │   │ (YOLOv8)           │
-        └──────────┬─────────┘   └──────────┬─────────┘
-                   │                        │
-         ┌─────────▼──────────┐   ┌─────────▼──────────┐
-         │ PostgreSQL (cars,  │   │ Redis + Celery     │
-         │ users, collections)│   │ (async processing) │
-         └─────────┬──────────┘   └─────────┬──────────┘
-                   │                        │
-           ┌───────▼─────────┐      ┌───────▼─────────┐
-           │   .NET MAUI     │      │  Feed/Community │
-           │   Mobile App    │      │    Features     │
-           └─────────────────┘      └─────────────────┘
+  user -->|Capture Photo / View Collection| MAUI
+  user -->|Visit / Learn / FAQ| LP
+  MAUI -->|HTTPS Requests| API
+  LP -->|Minimal API Calls: Stats / Health| API
+  API --> DB
+  API --> BLOB
+  API --> AI
 ```
 
+### Data Model
+
+```mermaid
+erDiagram
+  USER ||--o{ PHOTO : "captures"
+  PHOTO ||--|| VEHICLE : "classifies"
+  
+  VEHICLE {
+    string brand
+    string model
+    int year
+  }
+  USER {
+    int id
+    string email
+    string passwordHash
+  }
+  PHOTO {
+    int id
+    string url
+    datetime timestamp
+  }
+```
+
+### Deployment
+
+```mermaid
+flowchart TB
+  subgraph Azure
+    API[FastAPI API]
+    DB[(PostgreSQL Database)]
+    BLOB[(Azure Blob Storage)]
+    AI["AI Services & Model Deployment"]
+  end
+
+  Dev["Developers (GitHub/GitLab)"] -->|CI/CD| API
+  API --> DB
+  API --> BLOB
+  API --> AI
+
+```
+
+### Testing
+
+```mermaid
+flowchart TB
+  Unit["Unit Tests (Classes, Functions, API Endpoints)"]
+  Integration["Integration Tests (API <-> DB, API <-> AI)"]
+  E2E["End-to-End Tests (User -> MAUI -> API -> DB/AI)"]
+
+  Unit --> Integration --> E2E
+```
+
+* Architecture diagram now explicitly includes **Landing Page**.
+* Shows relationships between **clients, API, AI services, database, and storage**.
+* Deployment diagram demonstrates CI/CD flow from developers to cloud services.
+* Testing strategy covers **unit, integration, and end-to-end tests**.
+
+
+## Step 3: Mockups / Landing Page
+
+
+### Mockups
+
+#### Visual identity
+
+<img src="visualIdentity.png" width="500" >
+
+#### Home / Feed
+![Home Page Screenshot](docs/images/home.png)
+
+#### Camera
+![Camera Page Screenshot](docs/images/camera.png)
+
+#### TurboDex
+![Landing Page Screenshot](docs/images/pokedex.png)
+
+#### My Cars
+![My Cars Page Screenshot](docs/images/myCars.png)
+
+#### Profile
+![Profile Page Screenshot](docs/images/profile.png)
+
+### Landing page
+
+Available here : [TurboDex Landing page URL](https://dansnts.github.io/TurboDex/)
+
+Code here : [TurboDex Landing page code](docs/)
+
+
+## Step 4: Technical Choices
+
+* Frontend: Flutter (cross-platform mobile)
+* Backend: .NET Core (Azure-friendly) / Node.js for serverless functions
+* AI: PyTorch for training, TensorFlow Lite for mobile inference, OpenCV for blurring faces and plates
+* Database: Azure PostgreSQL Flexible Server
+* Cloud Storage: Azure Blob Storage (Student Pack \$100 credit)
+* CI/CD: GitHub Actions
+* Version Control: Git + GitHub
+
+## Step 5: Work Process
+
+* Git Flow: main / develop / feature branches
+* Agile/Scrum workflow using MURAL:
+
+  * 3-week sprints
+  * Daily stand-ups via Teams or Discord
+  * Sprint review and retrospective at end
+  * Sprint planning and backlog grooming
+
+## Step 6: Development Tools
+
+* Issue tracker: GitHub Issues (Kanban board: To Do → In Progress → Review → Done)
+* Task assignment: per feature or bug fix
+* Code reviews: mandatory pull requests
+* IDEs: Visual Studio Code (Flutter & backend), PyCharm (AI)
+* Containerization: Docker for local dev consistency
+
+## Step 7: Deployment Environment
+
+* Backend hosting: Azure App Service (Linux containers)
+* Database hosting: Azure Database for PostgreSQL Flexible Server
+* Image storage: Azure Blob Storage with public read URLs for app access
+* AI hosting: Azure VM with GPU (for training) and model API deployment
+* Monitoring: Azure Application Insights
+
+## Step 8: CI/CD Pipeline
+
+* Trigger build on push to develop branch
+* Run automated tests:
+
+  * Unit tests for backend
+  * Integration tests for API <-> DB <-> AI
+  * End-to-end tests for Flutter app
+* Build app artifacts for iOS & Android
+* Deploy to staging environment automatically
+* Run smoke tests on staging
+* Merge to main triggers production deployment
+* Monitor production logs and AI model performance
+
+## Step 9: Demonstration of Deployment
+
+TODO
+
 ---
-
-## Getting Started
-
-...
-
----
-
 ## Agile Roadmap
 
 ### **Week 1: Foundations**
@@ -140,4 +246,3 @@ TurboDex combines **cutting-edge machine learning**, **modern app design**, and 
 
 ## License
 
-[MIT](LICENSE) © 2025 TurboDex Team
