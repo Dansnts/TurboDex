@@ -217,6 +217,52 @@ Code here : [TurboDex Landing page code](docs/)
 * Merge to main triggers production deployment
 * Monitor production logs and AI model performance
 
+
+``` ASCII
+turbodex/
+│
+├── docs/          # Static site (HTML/CSS/JS)
+│   ├── images/
+│   ├── index.html
+│   ├── package.json
+│   ├── script.js
+│   └── style.cs
+
+│
+├── mobile-app/            # Flutter app
+│   ├── lib/
+│   ├── .gitignore
+│   └── pubspec.yaml
+│
+├── backend/               # FastAPI / Node backend
+│   ├── app/
+│   ├── Dockerfile
+│   ├── .gitignore
+│   └── requirements.txt
+│
+├── ai/                    # AI models, training scripts
+│   ├── train.py
+│   ├── yolov8/
+│   ├── .gitignore
+│   └── requirements.txt
+│
+├── infra/                 # Terraform + Ansible
+│   ├── terraform/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── .gitignore
+│   └── ansible/
+│       └── playbooks.yml
+│
+└── .github/workflows/     # CI/CD pipelines
+    ├── landing.yml
+    ├── mobile.yml
+    ├── backend.yml
+    ├── ai.yml
+    └── infra.yml 
+```
+
 ## Step 9: Demonstration of Deployment
 
 TODO
