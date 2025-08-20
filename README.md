@@ -192,7 +192,7 @@ Code here : [TurboDex Landing page code](docs/)
 * Issue tracker: GitHub Issues (Kanban board: To Do → In Progress → Review → Done)
 * Task assignment: per feature or bug fix
 * Code reviews: mandatory pull requests
-* IDEs: Visual Studio Code (Flutter & backend), PyCharm (AI)
+* IDEs: Visual Studio Code & Android Studio (Flutter & backend), PyCharm (AI) + Jupyter Notebook
 * Containerization: Docker for local dev consistency
 
 ## Step 7: Deployment Environment
