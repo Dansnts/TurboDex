@@ -42,6 +42,9 @@ terraform/tfplan
 # Misc
 # ----------------------------
 !.gitignore
+!.github/
+!.github/workflows/
 !.github/workflows/infra.yml
+
 !howto.md
 
