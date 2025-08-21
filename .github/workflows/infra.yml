@@ -2,7 +2,7 @@ name: Infra CI/CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ infra ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:   
