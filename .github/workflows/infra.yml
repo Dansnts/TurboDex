@@ -1,24 +1,28 @@
-name: CI - Terraform & Ansible
+name: Infra CI/CD
 
 on:
-  pull_request:
   push:
-    branches:
-      - main
-      - infra
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:   
 
 jobs:
   terraform:
     name: Terraform Plan
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./terraform   
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Terraform
+      - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.6.6
+          terraform_version: 1.9.8   
 
       - name: Terraform Init
         run: terraform init
@@ -29,25 +33,22 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
+      # Apply uniquement si déclenché manuellement
+      - name: Terraform Apply
+        if: github.event_name == 'workflow_dispatch'
+        run: terraform apply -auto-approve tfplan
+
   ansible:
-    name: Ansible Lint & Check
+    name: Ansible Test
     runs-on: ubuntu-latest
+    needs: terraform  
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+      - name: Install Ansible
+        run: sudo apt-get update && sudo apt-get install -y ansible
 
-      - name: Install Ansible + deps
-        run: |
-          pip install ansible ansible-lint
-          ansible-galaxy collection install azure.azcollection community.postgresql
-
-      - name: Ansible Syntax Check
-        run: ansible-playbook -i inventory.ini playbooks/site.yml --syntax-check
-
-      - name: Ansible Lint
-        run: ansible-lint playbooks/
+      - name: Run Ansible playbook (dry-run)
+        run: ansible-playbook ansible/playbooks/site.yml -i ansible/inventory.ini --check
