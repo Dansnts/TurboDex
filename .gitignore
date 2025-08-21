@@ -31,11 +31,12 @@ terraform/tfplan
 !ansible/
 !ansible/group_vars/
 !ansible/playbooks/
-!ansible/roles/
-!ansible/roles/postgress/
-!ansible/roles/webapp/
-!ansible/roles/postgress/tasks/
-!ansible/roles/webapp/tasks/
+!ansible/playbooks/
+!ansible/playbooks/roles/
+!ansible/playbooks/roles/postgres/
+!ansible/playbooks/roles/webapp/
+!ansible/playbooks/roles/postgres/tasks/
+!ansible/playbooks/roles/webapp/tasks/
 
 
 
@@ -45,8 +46,8 @@ terraform/tfplan
 !ansible/playbooks/*.yml
 !ansible/playbooks.yml
 !ansible/inventory.ini
-!ansible/roles/postgress/tasks/main.yml
-!ansible/roles/webapp/tasks/main.yml
+!ansible/playbooks/roles/postgres/tasks/main.yml
+!ansible/playbooks/roles/webapp/tasks/main.yml
 
 # ----------------------------
 # Misc
