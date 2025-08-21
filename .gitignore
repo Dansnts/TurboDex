@@ -31,12 +31,22 @@ terraform/tfplan
 !ansible/
 !ansible/group_vars/
 !ansible/playbooks/
+!ansible/roles/
+!ansible/roles/postgress/
+!ansible/roles/webapp/
+!ansible/roles/postgress/tasks/
+!ansible/roles/webapp/tasks/
+
+
 
 # Allow files inside Ansible
+!ansible.cfg
 !ansible/group_vars/*.yml
 !ansible/playbooks/*.yml
 !ansible/playbooks.yml
 !ansible/inventory.ini
+!ansible/roles/postgress/tasks/main.yml
+!ansible/roles/webapp/tasks/main.yml
 
 # ----------------------------
 # Misc

@@ -1,0 +1,11 @@
+- name: Ensure database exists
+  community.postgresql.postgresql_db:
+    name: "{{ db_name }}"
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_password }}"
+    login_host: "{{ db_host }}"
+    state: present
+
+- name: Ensure schema migrations can be run (placeholder)
+  debug:
+    msg: "Ici tu lanceras tes migrations Alembic ou SQL"
