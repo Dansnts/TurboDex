@@ -1,62 +1,46 @@
-# ---- Flutter ----
-.dart_tool/
-.packages
-.pub-cache/
-.pub/
-build/
-flutter_export_environment.sh
+# ----------------------------
+# Whitelist gitignore for Ansible + Terraform
+# ----------------------------
 
-# ---- Android ----
-**/android/.gradle/
-**/android/captures/
-**/android/local.properties
-**/android/app/debug
-**/android/app/profile
-**/android/app/release
-**/android/.idea/
+# Ignore everything by default
+*
 
-# ---- iOS / macOS ----
-**/ios/Flutter/.last_build_id
-**/ios/Pods/
-**/ios/Runner/GeneratedPluginRegistrant.*
-**/ios/build/
-**/ios/Runner.xcworkspace/
-**/macos/Flutter/ephemeral/
-**/macos/Pods/
-**/macos/build/
+# ----------------------------
+# Terraform
+# ----------------------------
 
-# ---- VS Code ----
-.vscode/
-.history/
+# Allow Terraform directories
+!terraform/
+!terraform/*.tf
+!terraform/*.tfvars
+!terraform/*.tf.json
+!terraform/output.tf
+!terraform/variables.tf
+!terraform/terraform.tfvars
 
-# ---- IntelliJ / Android Studio ----
-.idea/
-*.iml
+# Ignore sensitive Terraform state files
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/tfplan
 
-# ---- Linux ----
-**/linux/flutter/ephemeral/
+# ----------------------------
+# Ansible
+# ----------------------------
 
-# ---- Windows ----
-**/windows/flutter/ephemeral/
-**/windows/build/
+# Allow Ansible directories
+!ansible/
+!ansible/group_vars/
+!ansible/playbooks/
 
-# ---- Web ----
-**/web/.dart_tool/
+# Allow files inside Ansible
+!ansible/group_vars/*.yml
+!ansible/playbooks/*.yml
+!ansible/playbooks.yml
+!ansible/inventory.ini
 
-# ---- Firebase / secrets ----
-**/google-services.json
-**/GoogleService-Info.plist
-**/*.keystore
-**/*.jks
-**/*.pem
-**/*.p12
+# ----------------------------
+# Misc
+# ----------------------------
+!.gitignore
+!howto.md
 
-# ---- OS / Misc ----
-.DS_Store
-Thumbs.db
-*.swp
-*.lock
-*.tmp
-*.log
-*.bak
-*.orig
