@@ -43,7 +43,7 @@ terraform/tfplan
 # Allow files inside Ansible
 !ansible.cfg
 !ansible/group_vars/*.yml
-!ansible/playbooks/*.yml
+!ansible/playbooks/site.yml
 !ansible/playbooks.yml
 !ansible/inventory.ini
 !ansible/playbooks/roles/postgres/tasks/main.yml
