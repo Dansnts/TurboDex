@@ -27,7 +27,6 @@ jobs:
       - name: List terraform files
         run: ls -la
 
-
       - name: Terraform Init
         run: terraform init
 
