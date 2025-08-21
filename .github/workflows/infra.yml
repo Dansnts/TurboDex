@@ -1,0 +1,53 @@
+name: CI - Terraform & Ansible
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - infra
+
+jobs:
+  terraform:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+  ansible:
+    name: Ansible Lint & Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Ansible + deps
+        run: |
+          pip install ansible ansible-lint
+          ansible-galaxy collection install azure.azcollection community.postgresql
+
+      - name: Ansible Syntax Check
+        run: ansible-playbook -i inventory.ini playbooks/site.yml --syntax-check
+
+      - name: Ansible Lint
+        run: ansible-lint playbooks/
