@@ -24,6 +24,10 @@ jobs:
         with:
           terraform_version: 1.9.8   
 
+      - name: List terraform files
+        run: ls -la
+
+
       - name: Terraform Init
         run: terraform init
 
