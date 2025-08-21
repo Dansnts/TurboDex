@@ -21,3 +21,5 @@ storage_account     = "turbodexstorage"
 postgres_server     = "turbodex-db"
 postgres_user       = "turbodexadmin"
 postgres_password   = "YourSecurePassword123!"
+
+acr_admin_password  = "AnotherSecretPassword456!"
