@@ -1,7 +1,6 @@
 /home/dani/Data/Cours/4.SEM/PDG/TurboDex/mobile-app/build/linux/x64/debug/bundle/turbodex_app
 /home/dani/Data/Cours/4.SEM/PDG/TurboDex/mobile-app/build/linux/x64/debug/bundle/data/icudtl.dat
 /home/dani/Data/Cours/4.SEM/PDG/TurboDex/mobile-app/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
-/home/dani/Data/Cours/4.SEM/PDG/TurboDex/mobile-app/build/linux/x64/debug/bundle/lib/native_assets.json
 /home/dani/Data/Cours/4.SEM/PDG/TurboDex/mobile-app/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
 /home/dani/Data/Cours/4.SEM/PDG/TurboDex/mobile-app/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 /home/dani/Data/Cours/4.SEM/PDG/TurboDex/mobile-app/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
