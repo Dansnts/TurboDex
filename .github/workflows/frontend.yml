@@ -2,7 +2,7 @@ name: Flutter CI
 
 on:
   push:
-    branches: [ frontend ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -21,7 +21,10 @@ jobs:
       - name: Extract Flutter version from pubspec.yaml
         id: flutter_version
         run: |
-          VERSION=$(grep "sdk:" pubspec.yaml | sed 's/.*">=//;s/ <.*//')
+          VERSION=$(grep flutter pubspec.yaml | awk '{print $2}' | sed 's/"//g')
+          if [ -z "$VERSION" ]; then
+            VERSION="stable"
+          fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Setup Flutter
