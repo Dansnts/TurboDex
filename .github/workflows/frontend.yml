@@ -15,7 +15,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./mobile-app
+        working-directory: ./turbodex_app
 
     steps:
       # Checkout repository
@@ -51,5 +51,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-release-apk
-          path: mobile-app/build/app/outputs/flutter-apk/app-release.apk
+          path: turbodex_app/build/app/outputs/flutter-apk/app-release.apk
         if: github.event_name != 'pull_request'
