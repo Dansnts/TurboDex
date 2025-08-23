@@ -9,7 +9,7 @@ flowchart LR
 
   API[FastAPI API]
   AI["AI Services & Blur YOLOv8 + Car Classifier"]
-  DB[(PostgreSQL)]
+  DB[Cosmos DB for MongoDB (vCore)]
   BLOB[(Azure Blob Storage)]
 
   user -->|Capture photo / Consultation| MAUI
