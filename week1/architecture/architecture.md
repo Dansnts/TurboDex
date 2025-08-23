@@ -3,7 +3,7 @@ flowchart LR
   user[(Utilisateur)]
 
   subgraph Clients
-    MAUI["TurboDex App .NET MAUI"]
+    MAUI["TurboDex App Flutter"]
     LP["Landing Page"]
   end
 
