@@ -152,7 +152,7 @@ flowchart TB
 ![Profile Page Screenshot](docs/images/2FA.png)
 
 #### Welcome
-![Profile Page Screenshot](docs/images/welcomme.png)
+![Profile Page Screenshot](docs/images/welcome.png)
 
 #### Home / Feed
 ![Home Page Screenshot](docs/images/home.png)
@@ -168,8 +168,6 @@ flowchart TB
 
 #### Profile
 ![Profile Page Screenshot](docs/images/profile.png)
-
-
 
 ### Landing page
 
