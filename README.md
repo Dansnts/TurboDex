@@ -145,6 +145,15 @@ flowchart TB
 
 <img src="week1/visualIdentity/visualIdentity.png" width="500" >
 
+#### Registration
+![Profile Page Screenshot](docs/images/phoneRegistration.png)
+
+#### 2FA
+![Profile Page Screenshot](docs/images/2FA.png)
+
+#### Welcome
+![Profile Page Screenshot](docs/images/welcome.png)
+
 #### Home / Feed
 ![Home Page Screenshot](docs/images/home.png)
 
@@ -265,7 +274,7 @@ turbodex/
 
 ## Step 9: Demonstration of Deployment
 
-TODO
+See github Actions
 
 ---
 ## Agile Roadmap
